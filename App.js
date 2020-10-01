@@ -11,6 +11,7 @@ import { Button } from 'react-bootstrap';
 import Account from './component/Account';
 import Carte from './component/Carte';
 
+import Login from './component/admin/Login'
 
 class App extends React.Component {
   render(){
@@ -32,7 +33,7 @@ class App extends React.Component {
             <Text>Carte</Text>
           </Link>
           <Switch>
-            <Route exact path="/"><User/></Route>
+            <Route exact path="/" component={Login}></Route>
             <Route exact path="/Account"><Account/></Route>
             <Route exact path="/Carte"><Carte/></Route>
           </Switch>
