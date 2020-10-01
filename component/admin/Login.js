@@ -1,26 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View  } from 'react-native';
-import { Input, CheckBox, Button } from 'react-native-elements';
+import React from "react";
+import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import { Input, CheckBox, Button } from "react-native-elements";
 
+class Login extends React.Component {
+  constructor() {
+    this.send_form = this.send_form.bind(this);
+  }
 
-class Login extends React.Component{
+  send_form(values, actions) {
+    
+  }
 
-    render(){
-
-        return(
-            <View>
-                <Input
-                    label = 'Username'
-                    placeholder='...'
+  render() {
+    return (
+      <View>
+        <Input label="Username" placeholder="..." />
+        <Input label="Password" placeholder="..." />
+        <Button 
+                    title="Login" onPress={() => this.send_form() }
                 />
-                <Input
-                    label = 'Password'
-                    placeholder='...'
-                />
-                
-            </View>
-        );
-    }
+      </View>
+    );
+  }
 }
 
 export default Login;
