@@ -2,16 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 
-class Carte extends React.Component {
+class Asso extends React.Component {
     render(){
         return(
             <View>
                 <Text>
-                    Bonjour
+                    Asso
                 </Text>
             </View>
         );
     }
 }
 
-export default Carte;
+export default Asso;

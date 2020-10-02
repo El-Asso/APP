@@ -1,15 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import User from './component/User';
 import { Header } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { NativeRouter, Route, Link ,Switch} from "react-router-native";
 
-import Page from './component/Account';
-import { Button } from 'react-bootstrap';
-import Account from './component/Account';
-import Carte from './component/Carte';
+import User from './component/user/User';
+import Account from './component/user/Account';
+import Carte from './component/user/Carte';
+import Event from './component/user/Event';
+import Asso from './component/user/Asso';
+
 
 import Login from './component/admin/Login'
 
@@ -24,7 +25,7 @@ class App extends React.Component {
             rightComponent={{ icon: 'home', color: '#fff' }}
           />
           <Link to="/">
-            <Text>User</Text>
+            <Text>Login</Text>
           </Link>
           <Link to="/Account">
             <Text>Account</Text>
@@ -32,10 +33,18 @@ class App extends React.Component {
           <Link to="/Carte">
             <Text>Carte</Text>
           </Link>
+          <Link to="/Event">
+            <Text>Event</Text>
+          </Link>
+          <Link to="/Asso">
+            <Text>Asso</Text>
+          </Link>
           <Switch>
             <Route exact path="/" component={Login}></Route>
             <Route exact path="/Account"><Account/></Route>
             <Route exact path="/Carte"><Carte/></Route>
+            <Route exact path="/Event"><Event/></Route>
+            <Route exact path="/Asso"><Asso/></Route>
           </Switch>
         </View>  
       </NativeRouter>   
