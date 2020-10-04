@@ -3,11 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 class Carte extends React.Component {
+    constructor(state){
+        super(props)
+        this.state={
+            asso = []
+        }
+    }
+
     render(){
         return(
             <View>
                 <Text>
-                    Bonjour
+                    Carte
                 </Text>
             </View>
         );
