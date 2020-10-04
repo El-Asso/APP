@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { Input, CheckBox, Button } from "react-native-elements";
+import { Input, CheckBox, Button, Icon } from "react-native-elements";
 
 class Login extends React.Component {
   constructor(state) {
@@ -57,6 +57,33 @@ class Login extends React.Component {
         <Button
           title="Login" onPress={() => this.handlerSabmit()}
         />
+        
+<Icon
+  name='rowing' />
+
+<Icon
+  name='g-translate'
+  color='#00aced' />
+
+<Icon
+  name='sc-telegram'
+  type='evilicon'
+  color='#517fa4'
+/>
+
+<Icon
+  reverse
+  name='ios-american-football'
+  type='ionicon'
+  color='#517fa4'
+/>
+
+<Icon
+  raised
+  name='home'
+  type='font-awesome'
+  color='#517fa4'
+  onPress={() => console.log('hello')} />
       </View>
     );
   }
