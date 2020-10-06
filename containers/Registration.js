@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { Avatar, Input, ButtonGroup, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import StyledGlobal from '../global.conf'
-import { sortAssociations, setAsyncStorage, getAsyncStorage } from "../API/index"
+import { RegistrationUser, RegistrationAssociation } from "../API/index"
 
 class User extends React.Component {
     componentDidMount() {
@@ -48,11 +48,46 @@ class User extends React.Component {
     }
 }
 class Association extends React.Component {
+    constructor(state) {
+        super(state)
+        this.state = {
+            SIRET: "",
+            EMAIL: "",
+            PASSWORD: [
+                "", ""
+            ],
+        }
+    }
     componentDidMount() {
         console.log("componentDidMount:Association", true)
     }
     componentDidUpdate() {
-        console.log("componentDidUpdate:Association")
+        // console.log("componentDidUpdate:Association",this.state)
+    }
+    setSIRET(SIRET) {
+        console.log("setSIRET:Association", SIRET)
+        this.setState({
+            SIRET
+        })
+    }
+    setEmail(EMAIL) {
+        console.log("setEmail:Association", EMAIL)
+        this.setState({
+            EMAIL
+        })
+    }
+    setPasswords(password, index) {
+        console.log("setPasswords:Association", password, index)
+        let PasswordState = this.state.PASSWORD;
+        PasswordState[index] = password
+        this.setState({
+            PASSWORD: PasswordState
+        })
+    }
+    subitForm() {
+        // console.log("subitForm:Association", this.state)
+        RegistrationAssociation(this.state).then(res => console.log(res)
+        )
     }
     render() {
         return (
@@ -61,18 +96,22 @@ class Association extends React.Component {
                 <Input
                     style={{ textAlign: "center" }}
                     placeholder="Code SIRET"
+                    onChangeText={text => this.setSIRET(text)}
                 />
                 <Input
                     style={{ textAlign: "center" }}
                     placeholder="email"
+                    onChangeText={text => this.setEmail(text)}
                 />
                 <Input
                     style={{ textAlign: "center" }}
                     placeholder="password"
+                    onChangeText={text => this.setPasswords(text, 0)}
                 />
                 <Input
                     style={{ textAlign: "center" }}
                     placeholder="password"
+                    onChangeText={text => this.setPasswords(text, 1)}
                 />
                 <Button
                     type="outline"
@@ -85,6 +124,7 @@ class Association extends React.Component {
                             color="black"
                         />
                     }
+                    onPress={() => this.subitForm()}
                 />
             </>
         );
@@ -124,7 +164,6 @@ class Main extends React.Component {
             <>
                 <ButtonGroup
                     onPress={this.updateIndex}
-                    disabledStyle="true"
                     selectedIndex={this.state.inPage}
                     buttons={["USER", "ASSOCIATION"]}
                     containerStyle={{ height: 30 }}

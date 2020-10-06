@@ -33,18 +33,29 @@ const RegistrationUser = async () => {
     
 }
 // pour Sam
-const LoginAssociation = async () => {
-    
+const LoginAssociation = async (username="", password="") => {
+    let url = GLOBAL.api + GLOBAL.uri.login;
+    let method = "POST";
+    let option = { username: username, password: password}
+    return await fetchAPI(url,method,option).then(res => res.data)
 }
-const RegistrationAssociation = async () => {
-    
+const RegistrationAssociation = async (Obj) => {
+    console.log("API:RegistrationAssociation", Obj)
+    // if( Obj.SIRET !== "" && Obj.EMAIL !== "" && Obj.PASSWORD !== [] && Obj.PASSWORD[0] === Obj.PASSWORD[1]  ){
+    //     let url = GLOBAL.dev + GLOBAL.uri.login;
+    //     let method = "POST";
+    //     let option = { siret: Obj.SIRET, email: Obj.EMAIL, password: Obj.PASSWORD}
+    //     return await fetchAPI(url,method,option).then(res => res.data)
+    // }else{
+    //     return " Password is not equal";
+    // }
 }
 /////////////////////////////////////////////////////////////////
-module.exports = { sortAssociations, fetchAPI };
+module.exports = { LoginUser, RegistrationUser, LoginAssociation, RegistrationAssociation, sortAssociations, fetchAPI };
 /////////////////////////////////////////////////////////////////
 const GLOBAL = {
     api: "localhost:3001",
-    dev: "https://72a571050f59.ngrok.io",
+    dev: "https://eaefae91ee1b.ngrok.io",
     uri: {
         registration: "/registration",
         associations: "/associations",
