@@ -22,6 +22,23 @@ const sortAssociations = async () => {
     let url = GLOBAL.api + GLOBAL.uri.associations;
     return await fetchAPI(url).then(res => res.data)
 }
+const sortEvets = async () => {
+    
+}
+// pour Abdullah
+const LoginUser = async () => {
+    
+}
+const RegistrationUser = async () => {
+    
+}
+// pour Sam
+const LoginAssociation = async () => {
+    
+}
+const RegistrationAssociation = async () => {
+    
+}
 /////////////////////////////////////////////////////////////////
 module.exports = { sortAssociations, fetchAPI };
 /////////////////////////////////////////////////////////////////
