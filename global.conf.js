@@ -14,7 +14,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffcc',
         flex: 1,
         flexDirection: "column",
-        // justifyContent: "flex-end"
+    },
+    registration : {
+        justifyContent : "center",
+        alignItems: "center",
+        paddingHorizontal : 80,
     },
     header: {
         zIndex: 1,

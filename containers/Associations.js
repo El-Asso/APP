@@ -8,6 +8,8 @@ import Londing from "../component/core/Londing"
 import Footer from "../component/core/Footer"
 import { sortAssociations, setAsyncStorage, getAsyncStorage } from "../API/index"
 
+const delta = 0.003;
+
 class Associations extends React.Component {
     constructor(state) {
         super(state)
@@ -16,8 +18,8 @@ class Associations extends React.Component {
             region: {
                 latitude: 0,
                 longitude: 0,
-                latitudeDelta: 1,
-                longitudeDelta: 1,
+                latitudeDelta: delta,
+                longitudeDelta: delta,
             },
             associations: [],
             location: {
@@ -41,8 +43,8 @@ class Associations extends React.Component {
             let region = {
                 latitude: this.props.associations[0].location.lat,
                 longitude: this.props.associations[0].location.lng,
-                latitudeDelta: 1,
-                longitudeDelta: 1,
+                latitudeDelta: delta,
+                longitudeDelta: delta,
             };
             console.log(navTitle, location, region)
             this.setState({
@@ -68,8 +70,8 @@ class Associations extends React.Component {
         let region = {
             latitude: this.state.associations[index].location.lat,
             longitude: this.state.associations[index].location.lng,
-            latitudeDelta: 1,
-            longitudeDelta: 1,
+            latitudeDelta: delta,
+            longitudeDelta: delta,
         };
         console.log(location, region)
         this.setState({
