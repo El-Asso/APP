@@ -6,21 +6,29 @@ class Navbar extends React.Component {
     constructor(state) {
         super(state)
         this.Center = this.Center.bind(this)
+        this.Left = this.Left.bind(this)
+        this.Right = this.Right.bind(this)
+    }
+    actionLeftNav() {
+        console.log('NavbarComponents.Left')
     }
 
+    actionRightNav() {
+        console.log('NavbarComponents.Right')
+    }
 
     Left() {
         return (
             <Icon
                 name='menu'
                 color={StyledGlobal.header.color}
-                onPress={() => console.log('NavbarComponents.left')}
+                onPress={this.actionLeftNav}
             />
         )
     }
     Center() {
         return (
-            <Text style={{ color: StyledGlobal.header.color, fontWeight: StyledGlobal.header.fontWeight }}>{ this.props.title}</Text>
+            <Text style={{ color: StyledGlobal.header.color, fontWeight: StyledGlobal.header.fontWeight }}>{this.props.title}</Text>
         )
     }
     Right() {
@@ -28,7 +36,7 @@ class Navbar extends React.Component {
             <Icon
                 name='home'
                 color={StyledGlobal.header.color}
-                onPress={() => console.log('NavbarComponents.right')}
+                onPress={this.actionRightNav}
             />
         )
     }
