@@ -19,7 +19,7 @@ const fetchAPI = async (url, method = "GET", param) => {
 };
 
 const sortAssociations = async () => {
-    let url = GLOBAL.dev + GLOBAL.uri.associations;
+    let url = GLOBAL.api + GLOBAL.uri.associations;
     return await fetchAPI(url).then(res => res.data)
 }
 /////////////////////////////////////////////////////////////////
