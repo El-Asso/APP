@@ -17,7 +17,7 @@ class User extends React.Component {
             <>
                 <Input
                     style={{ textAlign: "center" }}
-                    placeholder="usename"
+                    placeholder="username"
                 />
                 <Input
                     style={{ textAlign: "center" }}
@@ -47,102 +47,10 @@ class User extends React.Component {
         );
     }
 }
-class Association extends React.Component {
-    constructor(state) {
-        super(state)
-        this.state = {
-            SIRET: "",
-            EMAIL: "",
-            PASSWORD: [
-                "", ""
-            ],
-        }
-    }
-    componentDidMount() {
-        console.log("componentDidMount:Association", true)
-    }
-    componentDidUpdate() {
-        // console.log("componentDidUpdate:Association",this.state)
-    }
-    setSIRET(SIRET) {
-        console.log("setSIRET:Association", SIRET)
-        this.setState({
-            SIRET
-        })
-    }
-    setEmail(EMAIL) {
-        console.log("setEmail:Association", EMAIL)
-        this.setState({
-            EMAIL
-        })
-    }
-    setPasswords(password, index) {
-        console.log("setPasswords:Association", password, index)
-        let PasswordState = this.state.PASSWORD;
-        PasswordState[index] = password
-        this.setState({
-            PASSWORD: PasswordState
-        })
-    }
-    subitForm() {
-        // console.log("subitForm:Association", this.state)
-        RegistrationAssociation(this.state).then(res => console.log(res)
-        )
-    }
-    render() {
-        return (
-            <>
 
-                <Input
-                    style={{ textAlign: "center" }}
-                    placeholder="Code SIRET"
-                    onChangeText={text => this.setSIRET(text)}
-                />
-                <Input
-                    style={{ textAlign: "center" }}
-                    placeholder="email"
-                    onChangeText={text => this.setEmail(text)}
-                />
-                <Input
-                    style={{ textAlign: "center" }}
-                    placeholder="password"
-                    onChangeText={text => this.setPasswords(text, 0)}
-                />
-                <Input
-                    style={{ textAlign: "center" }}
-                    placeholder="password"
-                    onChangeText={text => this.setPasswords(text, 1)}
-                />
-                <Button
-                    type="outline"
-                    title="NEXT  "
-                    iconRight
-                    icon={
-                        <Icon
-                            name="arrow-right"
-                            size={15}
-                            color="black"
-                        />
-                    }
-                    onPress={() => this.subitForm()}
-                />
-            </>
-        );
-    }
-}
 
 class Main extends React.Component {
-    constructor(state) {
-        super(state)
-        this.state = {
-            inPage: 0,
-        }
-        this.updateIndex = this.updateIndex.bind(this)
-    }
-
-    updateIndex(inPage) {
-        this.setState({ inPage })
-    }
+   
     componentDidMount() {
         console.log("componentDidMount::Main")
     }
@@ -162,17 +70,12 @@ class Main extends React.Component {
     render() {
         return (
             <>
-                <ButtonGroup
-                    onPress={this.updateIndex}
-                    selectedIndex={this.state.inPage}
-                    buttons={["USER", "ASSOCIATION"]}
-                    containerStyle={{ height: 30 }}
-                />
+                
                 <View style={[StyledGlobal.container, StyledGlobal.registration]}>
                     <Text style={{ fontWeight: "bold", fontSize: 35 }}> Registration </Text>
 
-                    {this.state.inPage === 0 ? <User /> : null}
-                    {this.state.inPage === 1 ? <Association /> : null}
+                   <User /> 
+                   
                 </View>
             </>
         )
@@ -181,4 +84,4 @@ class Main extends React.Component {
 
 
 
-export default User;
+export default Main;

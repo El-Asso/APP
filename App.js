@@ -28,7 +28,8 @@ class App extends React.Component {
       <NativeRouter>
         <Switch>
           <Route exact path="/" component={Registration}></Route>
-          <Route exact path="/associations" component={Associations}></Route>s
+          <Route exact path="/associations" component={Associations}></Route>
+          <Route exact path="/user" component={Login}></Route>
         </Switch>
       </NativeRouter>
     );
