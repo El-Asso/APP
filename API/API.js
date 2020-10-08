@@ -35,7 +35,7 @@ const LoginUser = async (username="", password="") => {
 const RegistrationUser = async (Obj) => {
     console.log("API:RegistrationUser", Obj)
     if( Obj.SIRET !== "" && Obj.EMAIL !== "" && Obj.PASSWORD !== [] && Obj.PASSWORD[0] === Obj.PASSWORD[1]  ){
-        let url = GLOBAL.dev + GLOBAL.uri.login;
+        let url = GLOBAL.api + GLOBAL.uri.login;
         let method = "POST";
         let option = { siret: Obj.SIRET, email: Obj.EMAIL, password: Obj.PASSWORD}
         return await fetchAPI(url,method,option).then(res => res.data)
@@ -53,8 +53,9 @@ const LoginAssociation = async (username="", password="") => {
 const RegistrationAssociation = async (Obj) => {
     console.log("API:RegistrationAssociation", Obj)
     if( Obj.SIRET !== "" && Obj.EMAIL !== "" && Obj.PASSWORD !== [] && Obj.PASSWORD[0] === Obj.PASSWORD[1]  ){
-        let url = GLOBAL.dev + GLOBAL.uri.login;
+        let url = GLOBAL.api + GLOBAL.uri.login;
         let method = "POST";
+
         let option = { siret: Obj.SIRET, email: Obj.EMAIL, password: Obj.PASSWORD}
         return await fetchAPI(url,method,option).then(res => res.data)
     }else{

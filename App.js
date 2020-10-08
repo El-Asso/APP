@@ -7,6 +7,7 @@ import { Header, BottomSheet, ListItem, Icon, Card, Button, } from 'react-native
 
 import Associations from "./containers/Associations"
 import Registration from "./containers/Registration"
+import Login from "./containers/Login"
 
 class App extends React.Component {
   constructor(state) {
@@ -27,7 +28,7 @@ class App extends React.Component {
       <NativeRouter>
         <Switch>
           <Route exact path="/" component={Registration}></Route>
-          <Route exact path="/associations" component={Associations}></Route>
+          <Route exact path="/associations" component={Associations}></Route>s
         </Switch>
       </NativeRouter>
     );
