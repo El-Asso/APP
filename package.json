@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "bootstrap": "^4.5.2",
     "expo": "^39.0.3",
     "expo-font": "~8.3.0",
@@ -20,6 +22,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
     "react-native-elements": "^2.3.2",
     "react-native-maps": "^0.27.1",
+    "react-native-material-cards": "^1.0.15",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",

@@ -1,37 +1,66 @@
-import { StatusBar } from 'expo-status-bar';
-
-import React, { useState, useEffect } from 'react';
-import { AsyncStorage, Dimensions, StyleSheet, Text, View, Image } from 'react-native'
-import { NativeRouter, Switch, Link, Route } from "react-router-native"
-import { Header, BottomSheet, ListItem, Icon, Card, Button, } from 'react-native-elements'
-
+import React from 'react';
+import { NativeRouter, Switch, Route } from "react-router-native"
 import Associations from "./containers/Associations"
+import Association from "./containers/Association"
 import Registration from "./containers/Registration"
 import Login from "./containers/Login"
+import styles from './global.conf';
 
 class App extends React.Component {
   constructor(state) {
     super(state)
     this.state = {
-      isFooter: false,
-      inLonding: false
+      iPage: "login",
+      AboutByID: "",
+      historyPage: []
     }
-    this.hendledFooter = this.hendledFooter.bind(this)
+    this.handlerPage = this.handlerPage.bind(this)
   }
 
-  hendledFooter(val) {
-    console.log("hendledFooter", val)
+  componentDidUpdate() {
+    console.log("APP", this.state)
+  }
+
+  handlerPage(tag, ID = null) {
+    console.log("handlerPage", tag)
+    let historyPage = this.state.historyPage
+    historyPage.reverse().push(tag)
+    historyPage.reverse()
+    this.setState({
+      iPage: tag,
+      historyPage,
+    })
+    if (ID !== null) {
+      this.setState({
+        AboutByID: ID
+      })
+    }
   }
 
   render() {
     return (
-      <NativeRouter>
-        <Switch>
-          <Route exact path="/" component={Registration}></Route>
-          <Route exact path="/associations" component={Associations}></Route>
-          <Route exact path="/user" component={Login}></Route>
-        </Switch>
-      </NativeRouter>
+      <>
+        {(this.state.iPage === "login" ?
+          <Login fPage={this.handlerPage} />
+          : null
+        )}
+        {(this.state.iPage === "signup" ?
+          <Registration fPage={this.handlerPage} />
+          : null
+        )}
+        {(this.state.iPage === "associations" ?
+          <Associations fPage={this.handlerPage} />
+          : null
+        )}
+        {(this.state.iPage === "association" ?
+          <Association fPage={this.handlerPage} ID={this.state.AboutByID} />
+          : null
+        )}
+        {(this.state.iPage === "event" ?
+          <Associations fPage={this.handlerPage} ID={this.state.AboutByID} />
+          : null
+        )}
+      </>
     );
   }
 }

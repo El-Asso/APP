@@ -4,16 +4,19 @@ import { Icon, Card, Button, } from 'react-native-elements'
 
 import StyledGlobal from '../../global.conf'
 
-const eventTouchable = (props) => {
-    console.log("eventTouchable", props)
-};
-const setLogo = (logo_obj) => {
-    if (logo_obj) {
-        return logo_obj.original
+
+const BookCard = ({ association, action }) => {
+    const eventTouchable = (props) => {
+        console.log("eventTouchable", props._id)
+        action("association", props._id )
+
+    };
+    const setLogo = (logo_obj) => {
+        if (logo_obj) {
+            return logo_obj.original
+        }
+        return "https://www.belin-beliet.fr/medias/2019/04/associations.jpg"
     }
-    return "https://www.belin-beliet.fr/medias/2019/04/associations.jpg"
-}
-const BookCard = ({ association }) => {
     return (
         <TouchableOpacity style={StyledGlobal.card_book} onPress={() => eventTouchable(association)}>
             <View style={StyledGlobal.card_body}>

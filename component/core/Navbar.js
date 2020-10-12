@@ -8,13 +8,16 @@ class Navbar extends React.Component {
         this.Center = this.Center.bind(this)
         this.Left = this.Left.bind(this)
         this.Right = this.Right.bind(this)
+        this.actionRightNav = this.actionRightNav.bind(this)
     }
     actionLeftNav() {
         console.log('NavbarComponents.Left')
+
     }
 
     actionRightNav() {
         console.log('NavbarComponents.Right')
+        this.props.actionRigth("associations")
     }
 
     Left() {
@@ -44,12 +47,14 @@ class Navbar extends React.Component {
         return (
             <View style={StyledGlobal.header}>
                 <Header
-                    statusBarProps={{ barStyle: 'light' }}
+                    statusBarProps={( this.props.bgnav !== undefined ? {barStyle: 'dark'} : {barStyle: 'light'} )}
                     placement="center"
                     leftComponent={this.Left}
                     centerComponent={this.Center}
                     rightComponent={this.Right}
-                    containerStyle={{ backgroundColor: StyledGlobal.header.backgroundColor, justifyContent: StyledGlobal.header.justifyContent }}
+                    containerStyle={{ 
+                        backgroundColor: ( this.props.bgnav !== undefined ? this.props.bgnav : StyledGlobal.header.backgroundColor ), 
+                        justifyContent: StyledGlobal.header.justifyContent }}
                 />
             </View>
         )

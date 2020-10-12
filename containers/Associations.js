@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native'
 import StyledGlobal from '../global.conf'
-import Carousel from "../component/core/Carousel"
+import {BookCarousel} from "../component/core/Carousel"
 import MapView from '../component/core/MapView';
 import Navbar from "../component/core/Navbar"
 import Londing from "../component/core/Londing"
 import Footer from "../component/core/Footer"
-import { sortAssociations, setAsyncStorage, getAsyncStorage } from "../API/index"
+import { sortAssociations } from "../API/index"
 
 const delta = 0.003;
 
@@ -84,14 +84,14 @@ class Associations extends React.Component {
     render() {
         return (
             <View style={StyledGlobal.container}>
-                <Navbar title={this.state.navTitle} />
+                <Navbar title={this.state.navTitle} actionRigth={this.props.fPage}/>
                 <MapView
                     style={StyledGlobal.mapview}
                     region={this.state.region}
                     location={this.state.location}
                 />
                 <View style={StyledGlobal.card}>
-                    <Carousel associations={this.state.associations} scrollmap={this._renderMap} />
+                    <BookCarousel associations={this.state.associations} scrollmap={this._renderMap} action={this.props.fPage}/>
                 </View>
                 <Footer />
             </View>
@@ -99,7 +99,7 @@ class Associations extends React.Component {
     }
 }
 
-class Main extends React.Component {
+class MainAssociations extends React.Component {
     constructor(state) {
         super(state)
         this.state = {
@@ -111,24 +111,12 @@ class Main extends React.Component {
     }
     componentDidMount() {
         console.log("componentDidMount::Main")
-        getAsyncStorage("LISTASSO01").then(res => {
-            if (res.value === null) {
-                sortAssociations().then(res => {
-                    this.setState({
-                        Associations: res,
-                        inLonding: false,
-                    })
-                    setAsyncStorage({ key: "LISTASSO01", value: JSON.stringify(res) })
-                })
-            } else {
-                this.setState({
-                    Associations: JSON.parse(res.value),
-                    inLonding: false,
-                })
-            }
-
+        sortAssociations().then(res => {
+            this.setState({
+                Associations: res.data,
+                inLonding: false
+            })
         })
-
     }
     // componentDidUpdate() {
     //     console.log("componentDidUpdate::Main")
@@ -137,7 +125,7 @@ class Main extends React.Component {
     render() {
         return (
             <>
-                {this.state.inLonding === true ? <Londing /> : <Associations associations={this.state.Associations} />}
+                {this.state.inLonding === true ? <Londing /> : <Associations associations={this.state.Associations} fPage={this.props.fPage} />}
             </>
         )
     }
@@ -145,4 +133,4 @@ class Main extends React.Component {
 
 
 
-export default Main;
+export default MainAssociations;
