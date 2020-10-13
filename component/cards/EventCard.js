@@ -10,10 +10,9 @@ import {
 import StyledGlobal from '../../global.conf'
 
 
-const EventCard = ({ eventsA, action }) => {
+const EventCard = ({ events }) => {
     const eventTouchable = (props) => {
         console.log("eventTouchable", props)
-        action("association", props)
 
     };
     return (
@@ -21,8 +20,11 @@ const EventCard = ({ eventsA, action }) => {
             <View style={StyledGlobal.card_body}>
                 <Card>
                     <CardImage
-                        source={{ uri: 'http://placehold.it/480x270' }}
-                        title="Above all i am here"
+                        source={{ uri: events.image }}
+                        title={events.titre}
+                    />
+                      <CardTitle 
+                        subtitle={events.date}
                     />
                 </Card>
             </View>

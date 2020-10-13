@@ -58,7 +58,20 @@ class EventsCarousel extends Component {
     constructor(state) {
         super(state);
         this.state = {
-            index: {}
+            index: {},
+            events:[{
+                image:"https://moovevent.com/wp-content/uploads/2019/07/MoovEvent_SliderEvents0.0_1860x1020.jpg",
+                titre:"Evénement 1",
+                date:"12-12-2020"
+            },{
+                image:"https://www.gl-events.com/sites/default/files/styles/hero_background_image/public/2020-03/COMMUNIQUE-APPEL-SOLIDARITE-COLLECTIVE-HEADER-BENTO.jpg?itok=hitK6ee_",
+                titre:"Evénement 2",
+                date:"12-12-2020"
+            },{
+                image:"https://www.kravmaga-beynes.fr/wp-content/uploads/2016/09/EVENTS1-910x768.jpg",
+                titre:"Evénement 3",
+                date:"12-12-2020"
+            }],
         }
         this._renderItem = this._renderItem.bind(this)
         this._renderItems = this._renderItems.bind(this)
@@ -84,7 +97,7 @@ class EventsCarousel extends Component {
         return (
             <Carousel
                 ref={(c) => this.carousel = c}
-                data={(this.props.events.length > 0 ? this.props.events : [])}
+                data={this.state.events}
                 renderItem={this._renderItems}
                 sliderWidth={SLIDER_WIDTH}
                 itemWidth={SLIDER_WIDTH}

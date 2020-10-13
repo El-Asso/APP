@@ -37,7 +37,7 @@ const BookCard = ({ association, action }) => {
                         source={{ uri: setLogo(association.logo) }}
                         title=""
                     />
-                    <CardContent text={association.objet.slice(0, 100)} style={{ marginBottom: 10, numberOfLines:3 }} numberOfLines={3} ellipsizeMode='tail'/>
+                    <CardContent text={association.objet.slice(0, 100)+"..."} style={{ marginBottom: 10, numberOfLines:3 }} numberOfLines={3} ellipsizeMode='tail'/>
                     <CardAction
                         separator={true}
                         inColumn={false}>
