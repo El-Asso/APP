@@ -6,13 +6,13 @@ import MapView from '../component/core/MapView';
 import Navbar from "../component/core/Navbar"
 import Londing from "../component/core/Londing"
 import Footer from "../component/core/Footer"
-import { sortAssociations } from "../API/index"
+import { sortAssociation } from "../API/index"
 
 const delta = 0.003;
 
 class Association extends React.Component {
-    constructor(state) {
-        super(state)
+    constructor(props) {
+        super(props)
         this.state = {
             navTitle: "",
             association :{
@@ -33,7 +33,7 @@ class Association extends React.Component {
     }
 
     componentDidMount() {
-        console.log("componentDidMount:Association", this.props.ID)
+        console.log("componentDidMount:Association", this.props)
     }
 
 
@@ -56,15 +56,14 @@ class MainAssociation extends React.Component {
         this.state = {
             inLonding: true,
             association: {},
-            Associations: [],
             title: "9300 associations"
         }
     }
     componentDidMount() {
         console.log("componentDidMount::Main")
-        sortAssociations().then(res => {
+        sortAssociation(this.props.iD).then(res => {
             this.setState({
-                Association: res.data,
+                association: res.data,
                 inLonding: false
             })
         })
@@ -76,7 +75,7 @@ class MainAssociation extends React.Component {
     render() {
         return (
             <>
-                {this.state.inLonding === true ? <Londing /> : <Association events={this.state.Associations} fPage={this.props.fPage} />}
+                {this.state.inLonding === true ? <Londing /> : <Association association={this.state.association} fPage={this.props.fPage} iD={this.props.iD} />}
             </>
         )
     }

@@ -11,5 +11,6 @@ module.exports = {
     LoginAssociation: API.LoginAssociation, 
     RegistrationAssociation: API.RegistrationAssociation,
     sortAssociations: API.sortAssociations,
+    sortAssociation: API.sortAssociation,
     fetchAPI: API.fetchAPI,
 }

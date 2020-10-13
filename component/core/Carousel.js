@@ -35,6 +35,7 @@ class BookCarousel extends Component {
     }
 
     render() {
+        console.log('Carousel#render this.props.associations', this.props.associations);
         return (
             <Carousel
                 ref={(c) => this.carousel = c}
@@ -97,7 +98,7 @@ class EventsCarousel extends Component {
     }
 }
 
-export default {BookCarousel, EventsCarousel};
+export {BookCarousel, EventsCarousel};
 
 
 

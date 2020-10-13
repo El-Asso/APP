@@ -1,4 +1,4 @@
-const HOST ="192.168.1.30";
+const HOST ="172.20.10.4";
 
 const GLOBAL = {
     associations: `http://${HOST}:3001/associations`,
@@ -33,6 +33,10 @@ const fetchAPI = async (url, method = "GET", param = {}) => {
 
 const sortAssociations = async () => {
     let url = GLOBAL.associations;
+        return await fetchAPI(url).then(res => res)
+}
+const sortAssociation = async (id) => {
+    let url = `${GLOBAL.associations}/${id}`;
         return await fetchAPI(url).then(res => res)
 }
 const sortEvets = async () => {
@@ -83,5 +87,6 @@ module.exports = {
     LoginAssociation,
     RegistrationAssociation,
     sortAssociations,
+    sortAssociation,
     fetchAPI
 };

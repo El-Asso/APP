@@ -11,8 +11,8 @@ import { sortAssociations } from "../API/index"
 const delta = 0.003;
 
 class Associations extends React.Component {
-    constructor(state) {
-        super(state)
+    constructor(props) {
+        super(props)
         this.state = {
             navTitle: "ASSOCIATIONS",
             region: {
@@ -32,7 +32,7 @@ class Associations extends React.Component {
     }
 
     componentDidMount() {
-        console.log("componentDidMount:Associations", true)
+        console.log("componentDidMount:Associations", this.props.associations)
         if (this.props.associations.length > 0) {
             let associations = this.props.associations;
             let navTitle = this.props.associations[0].titre;
@@ -57,7 +57,7 @@ class Associations extends React.Component {
     }
     componentDidUpdate() {
         console.log("componentDidUpdate:Associations", this.state)
-        // console.log(this.state.associations)
+        console.log(this.state.associations)
 
     }
     _renderMap(index) {
@@ -82,6 +82,7 @@ class Associations extends React.Component {
     }
 
     render() {
+        // console.log('#render this.props.associations', this.props.associations);
         return (
             <View style={StyledGlobal.container}>
                 <Navbar title={this.state.navTitle} actionRigth={this.props.fPage}/>
@@ -112,6 +113,7 @@ class MainAssociations extends React.Component {
     componentDidMount() {
         console.log("componentDidMount::Main")
         sortAssociations().then(res => {
+            // console.log("componentDidMount::Main res", res.data)
             this.setState({
                 Associations: res.data,
                 inLonding: false

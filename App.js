@@ -22,6 +22,11 @@ class App extends React.Component {
   }
 
   handlerPage(tag, ID = null) {
+    if (ID !== null) {
+      this.setState({
+        AboutByID: ID
+      })
+    }
     console.log("handlerPage", tag)
     let historyPage = this.state.historyPage
     historyPage.reverse().push(tag)
@@ -30,11 +35,7 @@ class App extends React.Component {
       iPage: tag,
       historyPage,
     })
-    if (ID !== null) {
-      this.setState({
-        AboutByID: ID
-      })
-    }
+
   }
 
   render() {
@@ -53,11 +54,7 @@ class App extends React.Component {
           : null
         )}
         {(this.state.iPage === "association" ?
-          <Association fPage={this.handlerPage} ID={this.state.AboutByID} />
-          : null
-        )}
-        {(this.state.iPage === "event" ?
-          <Associations fPage={this.handlerPage} ID={this.state.AboutByID} />
+          <Association fPage={this.handlerPage} iD={this.state.AboutByID} />
           : null
         )}
       </>
