@@ -66,7 +66,7 @@ class EventsCarousel extends Component {
 
     _renderItem(item) {
         console.log("Carousel::object", item)
-        this.props.scrollmap(item)
+        // this.props.scrollmap(item)
     }
 
     _renderItems({ item }) {

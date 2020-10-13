@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native'
-import { Icon, Card, Button, } from 'react-native-elements'
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
+import { Icon, 
+    // Card, 
+    Button, } from 'react-native-elements'
 
 import StyledGlobal from '../../global.conf'
 
@@ -20,7 +23,7 @@ const BookCard = ({ association, action }) => {
     return (
         <TouchableOpacity style={StyledGlobal.card_book} onPress={() => eventTouchable(association)}>
             <View style={StyledGlobal.card_body}>
-                <Card.Image source={{ uri: setLogo(association.logo) }} style={StyledGlobal.card_book_image} />
+                {/* <Card.Image source={{ uri: setLogo(association.logo) }} style={StyledGlobal.card_book_image} />
                 <Text style={{ marginBottom: 10 }} numberOfLines={3} ellipsizeMode='tail'>
                     {association.objet}
                 </Text>
@@ -28,7 +31,23 @@ const BookCard = ({ association, action }) => {
                     icon={<Icon name='code' color='#ffffff' />}
                     buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
                     title='VIEW NOW'
-                    onPress={() => eventTouchable(association)} />
+                    onPress={() => eventTouchable(association)} /> */}
+                                <Card>
+                    <CardImage
+                        source={{ uri: setLogo(association.logo) }}
+                        title=""
+                    />
+                    <CardContent text={association.objet.slice(0, 100)} style={{ marginBottom: 10, numberOfLines:3 }} numberOfLines={3} ellipsizeMode='tail'/>
+                    <CardAction
+                        separator={true}
+                        inColumn={false}>
+                        <CardButton
+                            onPress={() => eventTouchable(association)}
+                            title="PLUS D'INFO"
+                            color="blue"
+                        />
+                    </CardAction>
+                </Card>
             </View>
         </TouchableOpacity>
     )

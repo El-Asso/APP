@@ -12,7 +12,12 @@ const Maps = ({ region, location, title, description }) => {
     return (
         <MapView
             style={StyledGlobal.mapview}
-            region={region}
+            region={{
+                latitude: region.latitude - 0.0007,
+                longitude: region.longitude,
+                latitudeDelta: region.latitudeDelta,
+                longitudeDelta: region.longitudeDelta,
+            }}
         // onRegionChangeComplete={()=>{}}
         >
             <Marker
