@@ -123,6 +123,7 @@ class Login extends React.Component {
                         backgroundColor: "#fff",
                         width: StyledGlobal.Resize.width / 2,
                     }}
+                    color="#fff"
                     onPress={() => this.handlerSabmit()}
                 />
             </>
@@ -165,6 +166,7 @@ class MainLogin extends React.Component {
                             backgroundColor: "#fff",
                             width: StyledGlobal.Resize.width / 2,
                         }}
+                        color="#fff"
                         onPress={() => this.handlerPage("signup")}
                     />
                 </View>

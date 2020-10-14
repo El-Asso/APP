@@ -125,12 +125,13 @@ class User extends React.Component {
                     title="ENREGISTREMENT"
                     style={{
                         height: 40,
-                        borderColor: '#fff',
-                        borderWidth: 3,
-                        borderRadius: 12,
-                        backgroundColor: "#fff",
-                        width: StyledGlobal.Resize.width / 2,
+                            borderColor: '#fff',
+                            borderWidth: 3,
+                            borderRadius: 12,
+                            backgroundColor: "#fff",
+                            width: StyledGlobal.Resize.width / 2,
                     }}
+                    color="#fff"
                     onPress={() => this.handlerSabmit()}
                 />
             </>

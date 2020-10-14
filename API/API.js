@@ -1,4 +1,4 @@
-const HOST ="172.20.10.4";
+const HOST ="10.252.112.178";
 
 const GLOBAL = {
     associations: `http://${HOST}:3001/associations`,

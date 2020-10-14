@@ -16,7 +16,7 @@ const EventCard = ({ events }) => {
 
     };
     return (
-        <TouchableOpacity style={StyledGlobal.card_book} onPress={() => eventTouchable(eventsA)}>
+        <TouchableOpacity style={StyledGlobal.card_book} onPress={() => eventTouchable(events)}>
             <View style={StyledGlobal.card_body}>
                 <Card>
                     <CardImage
